@@ -1,17 +1,16 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
+import Context from '../Context/Context'
 import Navbar from './Navbar'
 import Sidebar from './Sidebar'
+import { LayoutContext } from '../Context/Context'
 
 const Layout = () => {
 
-    const [showSidebar, setShowSidebar] = useState(false)
+    const { toggleSidebar, showSidebar } = useContext(LayoutContext)
 
 
-    const toggleSidebar = () => {
-        setShowSidebar(prev => !prev)
-    }
     return (
-        <div>
+        <div className='relative'>
             <Navbar toggleSidebar={toggleSidebar} showSidebar={showSidebar} />
             <Sidebar toggleSidebar={toggleSidebar} showSidebar={showSidebar} />
         </div>

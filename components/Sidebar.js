@@ -1,20 +1,25 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { LayoutContext } from '../Context/Context'
 
-const Sidebar = (props) => {
+
+const Sidebar = () => {
+
+    const { toggleSidebar, showSidebar } = useContext(LayoutContext)
+
     return (
 
         // Header
-        props.showSidebar ?
-            <div className='scrollbar bg-[#282828] h-screen top-0 left-0 w-60 flex flex-col absolute z-10 overflow-y-scroll '>
+        <div className={!showSidebar ? 'absolute top-0 left-[-15rem] z-100  flex flex-col text-white h-screen transition translate-x-[-15rem] ease-out duration-75' : 'absolute top-0 left-[-15rem] z-100 backdrop-blur-sm flex flex-col text-white h-screen w-full transition-all ease-in translate-x-60 duration-75'}>
 
-                <div className='flex items-center ml-5 text-white '>
+            <div className='scrollbar w-60 flex flex-col overflow-y-scroll shadow-2xl h-full bg-[#282828]'>
 
-                    <div onClick={props.toggleSidebar} className='mr-5 btn'>
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <div className='pl-5 flex gap-5 items-center bg-[#282828] sticky top-0 left-0 '>
+                    <div onClick={toggleSidebar} className=' btn cursor-pointer'>
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 " fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                             <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
                         </svg>
                     </div>
-                    <div className='flex w-30 h-14 items-center justify-center'>
+                    <div className='flex w-24 h-14 items-center justify-center'>
                         <svg
                             viewBox="0 -15 32 50"
                             className="style-scope yt-icon"
@@ -40,10 +45,13 @@ const Sidebar = (props) => {
                                 </g>
                             </g>
                         </svg>
-                        <h1>MeTube</h1>
+                        <h1 className='cursor-pointer'>MeTube</h1>
                     </div>
                 </div>
-                <div className='container flex flex-col justify-around h-full text-slate-200 w-full pl-3'>
+
+
+
+                <div className='container flex flex-col justify-around h-full text-slate-200 w-full pt-14'>
                     <ul className=' flex flex-col h-full'>
                         <li>Home</li>
                         <li>Explore</li>
@@ -84,15 +92,17 @@ const Sidebar = (props) => {
                             <li>Settings</li>
                             <li>Help</li>
                             <li>Send feedback</li>
-
+                            <li>Settings</li>
+                            <li>Help</li>
+                            <li>Send feedback</li>
                         </ul>
                     </div>
 
                 </div>
 
             </div >
-            :
-            <div></div>
+        </div>
+
 
     )
 }
