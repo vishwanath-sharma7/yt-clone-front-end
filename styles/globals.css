@@ -44,3 +44,13 @@ li{
 li:hover{
   background: #666
 }
+
+html{
+  scroll-behaviour: smooth;
+}
+/* 
+* {
+  border:1px solid red;
+  background-color: black;
+  color:green;
+} */

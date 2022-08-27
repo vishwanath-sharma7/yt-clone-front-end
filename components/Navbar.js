@@ -4,13 +4,13 @@ import { LayoutContext } from '../Context/Context'
 const Navbar = (props) => {
 
 
-    const { toggleSidebar, showSidebar } = useContext(LayoutContext)
+    const { toggleSidebar } = useContext(LayoutContext)
 
     return (
-        <div className=' h-14 flex  text-slate-50 bg-[#282828] bg-opacity-95  items-center justify-between shadow-xl relative p-2'>
-            <div className='ml-5 flex h-full w-full items-center '>
+        <div className='pl-3 h-14 flex text-slate-50 bg-[#282828] bg-opacity-95  items-center justify-between shadow-xl sticky top-0 left-0 p-2'>
+            <div className=' flex h-full w-full items-center '>
 
-                <div onClick={toggleSidebar} className='mr-5 btn cursor-pointer'>
+                <div onClick={toggleSidebar} className='mr-5 btn cursor-pointer rounded-full p-1'>
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
                     </svg>

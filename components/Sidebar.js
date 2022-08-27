@@ -4,17 +4,18 @@ import { LayoutContext } from '../Context/Context'
 
 const Sidebar = () => {
 
-    const { toggleSidebar, showSidebar } = useContext(LayoutContext)
+    const { toggleSidebar, showSidebar, setShowSidebar } = useContext(LayoutContext)
 
     return (
 
         // Header
-        <div className={!showSidebar ? 'absolute top-0 left-[-15rem] z-100  flex flex-col text-white h-screen transition translate-x-[-15rem] ease-out duration-75' : 'absolute top-0 left-[-15rem] z-100 backdrop-blur-sm flex flex-col text-white h-screen w-full transition-all ease-in translate-x-60 duration-75'}>
+        <div className={showSidebar ? 'absolute top-0 left-[-15rem] z-100 backdrop-blur-sm flex text-white h-full w-full transition-all ease-in translate-x-60 duration-300 ' : '  absolute top-0 left-[-15rem] z-100 flex text-white h-full transition-all translate-x-[-15rem] ease-out duration-300'
+        }>
 
-            <div className='scrollbar w-60 flex flex-col overflow-y-scroll shadow-2xl h-full bg-[#282828]'>
+            <div className='scrollbar w-64 flex flex-col overflow-y-scroll shadow-2xl h-full bg-[#282828]'>
 
-                <div className='pl-5 flex gap-5 items-center bg-[#282828] sticky top-0 left-0 '>
-                    <div onClick={toggleSidebar} className=' btn cursor-pointer'>
+                <div className='pl-3 flex gap-5 items-center bg-[#282828]  sticky top-0 left-0 '>
+                    <div onClick={toggleSidebar} className=' btn cursor-pointer rounded-full p-1'>
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 " fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                             <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
                         </svg>
@@ -101,6 +102,9 @@ const Sidebar = () => {
                 </div>
 
             </div >
+            <div className='h-full w-full' onClick={toggleSidebar}>
+
+            </div>
         </div>
 
 

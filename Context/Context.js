@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 
 
 export const LayoutContext = createContext(null);
@@ -16,6 +16,19 @@ const Context = ({ children }) => {
     }
 
 
+    const [videoData, setVideoData] = useState([])
+
+    useEffect(() => {
+        async function fetchVideoData() {
+            const res = await fetch('http://localhost:5000/videos/random')
+            const data = await res.json()
+
+            setVideoData(data)
+        }
+        fetchVideoData()
+
+    }, [])
+
 
 
 
@@ -26,7 +39,9 @@ const Context = ({ children }) => {
         <LayoutContext.Provider value={
             {
                 toggleSidebar,
-                showSidebar
+                showSidebar,
+                setShowSidebar,
+                videoData
             }
 
 
